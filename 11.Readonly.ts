@@ -1,7 +1,6 @@
 //Readonly and optional
 
-
-
+//defining a type
 type User = {
     readonly _id: string
     name: string
@@ -20,7 +19,7 @@ let myUser: User = {
 }
 
 myUser.email = "v@v.com";
-// myUser._id = "1323123" swiggly
+// myUser._id = "1323123" swiggly (cause it was readonly)
 //myUser.heroes = ["hi","hello"]   swiggly cannot assign as it is readonly value
 
 
@@ -32,6 +31,7 @@ type cardDate = {
     cardDate: string
 }
 
+//this must follow cardNumber cardDate and {cvv:number}
 type cardDetails = cardNumber & cardDate & {
     cvv : number
 }

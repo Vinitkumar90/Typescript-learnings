@@ -11,7 +11,7 @@ function createUser({name:string, isPaid: boolean}){}
 let newUser = {name:"vinit", isPaid:true, email:"vinit@hotmail.com"}
 createUser(newUser)
 
-
+//strict return for this -> here it should only return and object
 function createCourse(): {name:string, price:number} {   //so it should return a object with key name type string, key price type number
     return {name:"reactjs", price:399}
 }

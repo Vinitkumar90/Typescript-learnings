@@ -9,7 +9,7 @@ addTwo(5)
 
 */
 
-//so typeInference is not good for functions like simple variable ...hower over addTwo it has addTwo(num: any): any
+//so typeInference is not good for functions like simple variable ...hover over addTwo it has addTwo(num: any): any
 // so before return num+2 we can easily to num.toUpperCase() which should not be allowed ❌
 
 function addTwo(num: number){
@@ -22,7 +22,7 @@ function getUpper(val:string){
     return val.toUpperCase();
 }
 getUpper("vinit");
-// getUpper(5) red swiggs
+// getUpper(5) red swiggs cause number is passed we expect passing string here
 
 
 function signUpUser(name:string, email:string, isPaid:boolean){
