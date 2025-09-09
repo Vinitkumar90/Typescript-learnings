@@ -3,3 +3,7 @@
 console.log(2+"2")  //22 ❌
 //although these behaviours are present in js docs
 
+
+
+//putting more restriction to code
+
