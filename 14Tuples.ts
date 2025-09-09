@@ -4,7 +4,7 @@
 
 // const user : (string | number) [] = [1,"vk"]
 //even order matters here in tuples
-let tuser: [string,number,boolean]
+let tuser: [string,number,boolean];
 
 tuser = ["vinit",12,true]
 

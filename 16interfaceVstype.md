@@ -1,6 +1,6 @@
-1) Basic usage
+## Basic usage
+```ts
 // with type
-```
 type UserType = {
   name: string;
 };
@@ -21,13 +21,13 @@ const u2: UserInterface = { name: "Vinit" };  // ✅
 
 2) Differences
 
-a) Extension
+## Extension
 
 - interface → extendable (like inheritance).
 
 - type → use intersections (&).
 
-```
+```ts
 interface Person {
   name: string;
 }
@@ -41,13 +41,13 @@ type StudentType = PersonType & { roll: number };
 
 - Both result in { name: string; roll: number }.
 
-b) Merging
+## Merging
 
 - Interface can merge declarations automatically.
 
 - Type cannot.
 
-```
+```ts
 interface Box { width: number; }
 interface Box { height: number; }
 
@@ -57,16 +57,17 @@ const b: Box = { width: 10, height: 20 }; // ✅ works
 type Shape = { width: number };
 // type Shape = { height: number }; // ❌ Error: duplicate identifier
 ```
-c) Non-object stuff
+## Non-object stuff
 
 - type can alias primitive, union, tuple, etc.
 
 - interface can only describe objects / callable types / class contracts.
-```
+```ts
 type ID = string | number; // ✅
 interface ID = string | number; // ❌ Error (not allowed)
 ```
-3. Rule of thumb
+
+## Rule of thumb
 
 - If you’re modeling objects / classes → interface (extendable, mergeable).
 
