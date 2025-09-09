@@ -85,3 +85,94 @@ In HTML, when using ES modules:
 2. Adding `export {}` makes the file a **module**, preventing globals.  
 3. Browser supports **ESM (`export` / `import`)**, not **CommonJS (`exports`)**.
 
+---
+
+## Browser
+
+- ✅ Supports ESM (export / import) natively.
+
+- ❌ Does not support CommonJS (exports, require).
+
+So if your code runs in the browser, you must compile to "module": "ESNext" or "module": "ES2020" in tsconfig.json.
+
+```json
+// tsconfig.json for browser
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",   // Browser understands import/export
+    "outDir": "dist"
+  }
+}
+```
+
+And in HTML:
+```html
+<script type="module" src="./dist/index.js"></script>
+```
+
+## Node.js
+
+- Originally, Node.js only supported CommonJS (require, module.exports).
+
+- But now Node.js also supports ESM (import/export), provided you:
+
+- Use .mjs extension OR
+
+- Add "type": "module" in package.json.
+
+```json
+CommonJS (default Node.js style)
+// tsconfig.json for Node (CommonJS)
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",   // Node default
+    "outDir": "dist"
+  }
+}
+```
+
+```json
+ESM in Node.js (modern style)
+// tsconfig.json for Node (ESM)
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",   // Node can handle import/export
+    "outDir": "dist"
+  }
+}
+```
+```json
+Also add to package.json:
+
+{
+  "type": "module"
+}
+```
+
+---
+## extra
+```json
+"module": "NodeNext" (or "Node16")
+```
+- Newer TypeScript options specifically designed for Node.js’s dual support (both CommonJS and ESM).
+
+- Lets TypeScript follow Node’s own resolution rules:
+
+- .cjs → CommonJS
+
+- .mjs → ESM
+
+- .js → depends on "type" field in package.json.
+
+Recommended if you want modern Node.js compatibility with both systems.
+
+---
+## extra
+- Any JS file included in HTML can manipulate the page via DOM.
+
+- Modules do not leak variables to the HTML/global scope — you have to explicitly attach to window if you want that.
+
+- JS cannot automatically access HTML variables; only the DOM and global objects are accessible.
