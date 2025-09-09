@@ -6,4 +6,4 @@ let myNum = 6;
 
 console.log(greetings)
 
-export {}
+export {}   //refer 17ScriptvsModule.md
