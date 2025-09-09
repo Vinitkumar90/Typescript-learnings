@@ -19,36 +19,50 @@ const vinit = new User("v@vk.com", "vinit")
 */
 
 class User {
+
+  private _courseCount = 1
+
   readonly city: string = "ranchi";   //JS does not enforce readonly — it’s only checked at compile time by TypeScript.
+
   constructor(
     public email: string,
     public name: string,
     // private userId: string
-  ) {}
+  ) {
+
+  }
+
+  private deleteToken(){
+    console.log("Token deleted");
+  }
+
+  get getAppleEmail(): string {
+    return `apple${this.email}`
+  }
+
+  get courseCount():number {
+    return this._courseCount
+  }
+
+  set courseCount(courseNum) {
+    if(courseNum <=1){
+        throw new Error("Course count should be more than 1")
+    }
+    this._courseCount = courseNum
+  }
+
 }
 
 const vinit = new User("v@v.com", "vinit");
 console.log(vinit);
 
-
-//TypeScript prevents access to userId outside the class at compile time.
-//But in compiled JS, all properties are public — there’s no real privacy unless you use special JS features.
-
 /*
-Real private in modern JavaScript
-ES2020 introduced true private fields using #:
-
-class User {
-  #userId: string;
-  constructor(id: string) {
-    this.#userId = id;
-  }
-}
-
-const u = new User("123");
-console.log(u.#userId); // ❌ JS error: private field
-
-
-Variables starting with # are actually private at runtime.
-TypeScript supports this syntax too.
+Getter (get) → a method that retrieves a property value.
+Setter (set) → a method that sets/updates a property value, optionally with validation.
  */
+
+//we getter and setter we access pvt properties not directly
+
+// vinit.courseCount
+// vinit.courseCount = 4
+// vinit.delete() not accessible
