@@ -42,6 +42,13 @@ class User {
         this._courseCount = courseNum;
     }
 }
+//with  protected we can use the property in the same class as well as the class which inherits the class
+class SubUser extends User {
+    isFamily = true;
+    changeCourseCount() {
+        this._courseCount = 4;
+    }
+}
 const vinit = new User("v@v.com", "vinit");
 console.log(vinit);
 export {};

@@ -20,7 +20,7 @@ const vinit = new User("v@vk.com", "vinit")
 
 class User {
 
-  private _courseCount = 1
+  protected _courseCount = 1
 
   readonly city: string = "ranchi";   //JS does not enforce readonly — it’s only checked at compile time by TypeScript.
 
@@ -51,6 +51,15 @@ class User {
     this._courseCount = courseNum
   }
 
+}
+
+//with  protected we can use the property in the same class as well as the class which inherits the class
+
+class SubUser extends User {
+    isFamily:boolean = true
+    changeCourseCount(){
+        this._courseCount = 4
+    }
 }
 
 const vinit = new User("v@v.com", "vinit");
